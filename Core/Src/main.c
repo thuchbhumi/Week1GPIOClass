@@ -89,7 +89,7 @@ int main(void) {
 	MX_USART2_UART_Init();
 	/* USER CODE BEGIN 2 */
 	GPIO_PinState SwitchState[2];	//NOW,LAST
-	uint16_t LED1_HalfPeriod = 500;	//1Hz
+	uint16_t LED1_HalfPeriod = 250;	//1Hz
 	uint32_t TimeStamp = 0;
 	uint32_t ButtonTimeStamp = 0;
 	/* USER CODE END 2 */
@@ -106,10 +106,10 @@ int main(void) {
 			SwitchState[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
 			if (SwitchState[1] == GPIO_PIN_SET
 					&& SwitchState[0] == GPIO_PIN_RESET) {
-				if (LED1_HalfPeriod == 500) {
-					LED1_HalfPeriod = 250;
-				} else {
+				if (LED1_HalfPeriod == 250) {
 					LED1_HalfPeriod = 500;
+				} else {
+					LED1_HalfPeriod = 250;
 				}
 			}
 			SwitchState[1] = SwitchState[0];
